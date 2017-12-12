@@ -22,17 +22,19 @@ h1, h2, h3 {
   line-height: 1;
 }
 
+a {
+  color: $brand-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 input, select, textarea, button {
   font-size: 1em;
 }
 
 button {
   cursor: pointer;
-}
-
-.app__input,
-.app__btn {
-  padding: 5px 10px;
-  min-height: 35px;
-  border: 0;
 }

@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Rating from './Rating';
 
-// import './FilmSearch.css';
+import './FilmSearch.css';
+
 import filmPoster from './images/film-poster.jpg';
 
 const product = {

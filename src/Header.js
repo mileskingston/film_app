@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
@@ -7,10 +7,8 @@ import searchIcon from './images/search.svg';
 
 import './Header.css';
 
-class Header extends Component {
+class Header extends PureComponent {
   render() {
-    const {props} = this;
-
     return (
       <header className="app__header">
         <Link to="/">

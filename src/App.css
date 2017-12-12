@@ -3,6 +3,12 @@
 .app__wrapper {
   padding: 0 20px; }
 
+.app__input,
+.app__btn {
+  padding: 5px 10px;
+  min-height: 35px;
+  border: 0; }
+
 .app__films {
   display: flex; }
 
