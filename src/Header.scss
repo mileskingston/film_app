@@ -1,0 +1,44 @@
+@import './variables.scss';
+
+.app__header {
+  padding: $spacing-r;
+  color: white;
+  background-color: $grey;
+
+  h1 {
+    margin-bottom: 0;
+  }
+
+  .app__logo {
+    display: inline-block;
+    vertical-align: middle;
+    height: 35px;
+    margin-right: $spacing-r;
+    font-size: 1.5em;
+  }
+
+  .app__form {
+    vertical-align: middle;
+    position: relative;
+    width: 300px;
+    float: right;
+
+    input {
+      width: 100%;
+    }
+
+    .app__btn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0;
+      width: 35px;
+      background-color: $grey;
+      border-radius: 0;
+
+      img {
+        width: 22px;
+      }
+    }
+  }
+}
