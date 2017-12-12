@@ -1,0 +1,42 @@
+.app_film {
+  flex: 1 1 15%;
+  margin-left: 3px;
+  margin-right: 3px;
+  position: relative;
+  min-height: 278px;
+  max-width: 15%;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.app_film img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: 0.3s ease-in-out;  
+}
+
+.app_film h3 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 0 10px 10px 10px;
+  color: #fff;
+}
+
+.film_content {
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+}
+
+.app_film:hover {
+  border: 2px solid #fff;
+}
+.app_film:hover img {
+  opacity: 0.4;
+}
+.app_film:hover .film_content {
+  opacity: 1;
+}

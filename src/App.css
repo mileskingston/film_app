@@ -1,18 +1,35 @@
-.app {
+.app__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #141414;
+  color: white;
   text-align: center;
 }
 
 .app__logo {
-  height: 80px;
+  flex: 1 1 50px;
+  height: 50px;
+  max-width: 50px;
 }
 
-.app__header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.app__form {
+  position: relative;
+  flex: 1;
+  max-width: 300px;
 }
-
-.app__logo {
-  font-size: 1.5em;
+.app__form input {
+  width: 100%;
+  padding: 10px;
+  min-height: 40px;
+  border: 1px solid transparent;
+}
+.app__form button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0;
+  width: 40px;
+  height: 40px;
 }
