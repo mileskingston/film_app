@@ -1,18 +1,49 @@
-.app {
-  text-align: center;
-}
-
-.app__logo {
-  height: 80px;
-}
-
+/* Colors */
+/* Spacing */
 .app__header {
-  background-color: #222;
-  height: 150px;
   padding: 20px;
   color: white;
-}
+  background-color: #5c5c5c; }
+  .app__header h1 {
+    margin-bottom: 0; }
+  .app__header .app__logo {
+    display: inline-block;
+    vertical-align: middle;
+    height: 35px;
+    margin-right: 20px;
+    font-size: 1.5em; }
+  .app__header .app__form {
+    vertical-align: middle;
+    position: relative;
+    width: 300px;
+    float: right; }
+    .app__header .app__form input {
+      width: 100%; }
+    .app__header .app__form .app__btn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0;
+      width: 35px;
+      background-color: #5c5c5c;
+      border-radius: 0; }
+      .app__header .app__form .app__btn img {
+        width: 22px; }
 
-.app__logo {
-  font-size: 1.5em;
-}
+.app__films {
+  display: flex; }
+
+.app__film {
+  position: relative;
+  flex: 1 1 25%;
+  max-width: 25%; }
+  .app__film img {
+    max-width: 100%; }
+  .app__film h3 {
+    margin-top: 0; }
+
+.app__film__content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 0; }
