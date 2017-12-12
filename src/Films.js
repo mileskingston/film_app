@@ -17,9 +17,8 @@ class Films extends PureComponent {
         <h2 className="app_films_title">Most Popular</h2>
         {props.data.results.map((film, i) =>
           <Film
-            key={i}
-            title={film.title}
-            poster={`http://image.tmdb.org/t/p/w185//${film.poster_path}`}
+            key={film.id}
+            data={film}
           />
         )}
       </div>
@@ -30,6 +29,10 @@ class Films extends PureComponent {
 Films.displayName = 'Films';
 
 Films.propTypes = {
+  title: PropTypes.string.isRequired,
+  data: PropTypes.shape({
+    
+  })
 };
 
 Films.defaultProps = {

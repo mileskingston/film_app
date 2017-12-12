@@ -1,28 +1,37 @@
-/* Colors */
-/* Spacing */
+@import './variables.scss';
+
 .app__wrapper {
-  padding: 0 20px; }
+  padding: 0 $spacing-r;
+}
 
 .app__input,
 .app__btn {
   padding: 5px 10px;
   min-height: 35px;
-  border: 0; }
+  border: 0;
+}
 
 .app__films {
-  display: flex; }
+  display: flex;
+}
 
 .app__film {
   position: relative;
   flex: 1 1 25%;
-  max-width: 25%; }
-  .app__film img {
-    max-width: 100%; }
-  .app__film h3 {
-    margin-top: 0; }
+  max-width: 25%;
+
+  img {
+    max-width: 100%;
+  }
+
+  h3 {
+    margin-top: 0;
+  }
+}
 
 .app__film__content {
   position: absolute;
   bottom: 0;
   left: 0;
-  margin: 0; }
+  margin: 0;
+}
