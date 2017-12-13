@@ -1,7 +1,9 @@
 /* Colors */
 /* Spacing */
 .app__wrapper {
-  padding: 0 20px; }
+  max-width: 1200px;
+  padding: 0 20px;
+  margin: 20px auto; }
 
 .app__input,
 .app__btn {
@@ -12,3 +14,22 @@
 .app__input {
   border: 0;
   min-height: 35px; }
+
+.app__messages {
+  text-align: left;
+  margin: 10px 0; }
+  .app__messages .app__message {
+    padding: 10px;
+    border-radius: 3px; }
+  .app__messages .message--success {
+    color: #2a6538;
+    background-color: #d4edda;
+    border: 1px solid #68c07d; }
+  .app__messages .message--info {
+    color: #9a7500;
+    background-color: #fff3cd;
+    border: 1px solid #ffce34; }
+  .app__messages .message--error {
+    color: #861721;
+    background-color: #f8d7da;
+    border: 1px solid #e15562; }

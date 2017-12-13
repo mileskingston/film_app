@@ -5,6 +5,11 @@ import Films from './Films';
 
 import './FilmSearch.css';
 
+/**
+ * TODO:
+ * proptypes
+ */
+
 class FilmSearch extends PureComponent {
   constructor(props) {
     super(props);

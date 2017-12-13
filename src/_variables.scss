@@ -7,9 +7,21 @@ $grey: #5c5c5c!default;
 $grey-dark: #29292A!default;
 $grey-light: #9b9b9b!default;
 
-$msg-success: #27ae60!default;
-$msg-info: #e67e22!default;
-$msg-error: #c0392b!default;
+$rating-high: #27ae60!default;
+$rating-mid: #e67e22!default;
+$rating-low: #c0392b!default;
+
+$msg-success: #d4edda!default;
+$msg-success-border: darken(#d4edda, 30%);
+$msg-success-text: darken(#d4edda, 60%);
+
+$msg-info: #fff3cd!default;
+$msg-info-border: darken(#fff3cd, 30%);
+$msg-info-text: darken(#fff3cd, 60%);
+
+$msg-error: #f8d7da!default;
+$msg-error-border: darken(#f8d7da, 30%);
+$msg-error-text: darken(#f8d7da, 60%);
 
 /* Spacing */
 $spacing-r: 20px!default;

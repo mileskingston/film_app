@@ -10,11 +10,11 @@
   border-radius: 50%;
 }
 .rating__score--high {
-  background-color: $msg-success;
+  background-color: $rating-high;
 }
 .rating__score--mid {
-  background-color: $msg-info;
+  background-color: $rating-mid;
 }
 .rating__score--low {
-  background-color: $msg-error;
+  background-color: $rating-low;
 }

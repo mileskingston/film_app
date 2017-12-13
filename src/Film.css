@@ -1,3 +1,5 @@
+/* Colors */
+/* Spacing */
 .app_film {
   flex: 1 1 16%;
   position: relative;
@@ -10,7 +12,8 @@
 .app_film img {
   text-align: center;
   max-width: 100%;
-  transition: 0.3s ease-in-out; }
+  transition: 0.3s ease-in-out;
+  -webkit-backface-visibility: hidden; }
 
 .app_film h3 {
   line-height: 1.1;
@@ -18,9 +21,9 @@
 
 .film_content {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
-  margin: 10px;
+  margin: 6px;
   opacity: 0;
   transition: 0.3s ease-in-out; }
 
@@ -28,7 +31,7 @@
   border: 2px solid #fff; }
 
 .app_film:hover img {
-  opacity: 0.4; }
+  opacity: 0.3; }
 
 .app_film:hover .film_content {
   opacity: 1; }

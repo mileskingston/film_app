@@ -1,11 +1,10 @@
+/* Colors */
+/* Spacing */
 .app_films {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  max-width: 1200px;
-  margin: 20px auto;
-  padding-left: 20px;
-  padding-right: 20px; }
+  margin-bottom: 20px; }
 
 .app_films_title {
   flex: 1 1 100%;
