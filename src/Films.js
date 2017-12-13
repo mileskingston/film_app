@@ -10,17 +10,19 @@ class Films extends PureComponent {
   }
 
   render() {
+    let renderFilm;
     const { props } = this;
+
+    if (props.results.data) {
+      renderFilm = props.results.data.results.map((film, i) =>
+        <Film key={film.id} film={film} />
+      )
+    }
 
     return (
       <div className="app_films">
-        <h2 className="app_films_title">Most Popular</h2>
-        {props.data.results.map((film, i) =>
-          <Film
-            key={film.id}
-            data={film}
-          />
-        )}
+        <h3 className="app_films_title">{props.title}</h3>
+        {renderFilm}
       </div>
     );
   }
@@ -29,13 +31,14 @@ class Films extends PureComponent {
 Films.displayName = 'Films';
 
 Films.propTypes = {
-  title: PropTypes.string.isRequired,
-  data: PropTypes.shape({
+  title: PropTypes.string,
+  results: PropTypes.shape({
     
   })
 };
 
 Films.defaultProps = {
+  title: null
 };
 
 export default Films;

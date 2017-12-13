@@ -23,8 +23,8 @@
     width: 300px;
     float: right;
 
-    input {
-      width: 100%;
+    .app__input {
+      width: calc(100% - 35px);
     }
 
     .app__btn {

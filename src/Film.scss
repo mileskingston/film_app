@@ -5,16 +5,19 @@
   margin-right: 3px;
   max-width: 16%;
   border: 2px solid transparent;
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 .app_film img {
   text-align: center;
   max-width: 100%;
-  transition: 0.3s ease-in-out; }
+  transition: 0.3s ease-in-out;  
+}
 
 .app_film h3 {
   line-height: 1.1;
-  color: #fff; }
+  color: #fff;
+}
 
 .film_content {
   position: absolute;
@@ -22,13 +25,15 @@
   left: 0;
   margin: 10px;
   opacity: 0;
-  transition: 0.3s ease-in-out; }
+  transition: 0.3s ease-in-out;
+}
 
 .app_film:hover {
-  border: 2px solid #fff; }
-
+  border: 2px solid #fff;
+}
 .app_film:hover img {
-  opacity: 0.4; }
-
+  opacity: 0.4;
+}
 .app_film:hover .film_content {
-  opacity: 1; }
+  opacity: 1;
+}
