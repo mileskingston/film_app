@@ -8,6 +8,7 @@ import './FilmSearch.css';
 /**
  * TODO:
  * proptypes
+ * Create Most popular into a carousel component
  */
 
 class FilmSearch extends PureComponent {
@@ -31,7 +32,7 @@ class FilmSearch extends PureComponent {
 
     return (
       <section className="app__film-search">
-        {props.results.data &&
+        {props.results.data.total_results > 0 &&
           <Films results={props.results} />
         }
 
@@ -46,7 +47,29 @@ class FilmSearch extends PureComponent {
 FilmSearch.displayName = 'FilmSearch';
 
 FilmSearch.propTypes = {
-  results: PropTypes.shape({})
+  results: PropTypes.shape({
+    data: {
+      page: PropTypes.number,
+      results: [
+        PropTypes.shape({
+          adult: PropTypes.bool,
+          backdrop_path: PropTypes.string,
+          genre_ids: PropTypes.arrayOf(PropTypes.string),
+          id: PropTypes.number,
+          original_language: PropTypes.string,
+          original_title: PropTypes.string,
+          overview: PropTypes.string,
+          popularity: PropTypes.number,
+          poster_path: PropTypes.string,
+          release_date: PropTypes.string,
+          title: PropTypes.string,
+          video: PropTypes.bool,
+          vote_average: PropTypes.number,
+          vote_count: PropTypes.number
+        })
+      ]
+    }
+  })
 };
 
 FilmSearch.defaultProps = {

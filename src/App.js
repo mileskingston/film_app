@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 
 import Header from './Header';
+import Message from './Message';
 import FilmDetail from './FilmDetail';
 import FilmSearch from './FilmSearch';
 
@@ -61,18 +62,14 @@ class App extends PureComponent {
             {state.results.data.total_results < 1
               && state.hasSubmitted
               && (
-                <section className="app__messages">
-                  <div className="app__message message--info">No films found, search again</div>
-                </section>
+                <Message type="info" text="No films found, search again" />
               )
             }
 
             {state.results.data.total_results > 1
               && state.hasSubmitted
               && (
-                <section className="app__messages">
-                  <div className="app__message message--success">Search results for: {state.value}</div>
-                </section>
+                <Message type="success" text={`Search results for: ${state.value}`} />                
               )
             }
 

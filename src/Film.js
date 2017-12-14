@@ -12,13 +12,10 @@ import './Film.css';
 */
 
 class Film extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { props } = this;
-    const titleDecoded = props.film.title.toLowerCase().replace(/ /g, '-').replace(':', '');
+    const titleDecoded = props.film.title.toLowerCase().replace(/[^a-zA-Z0-9']+/g, '-').replace(/[']+/g, '');
+    // const titleDecoded = props.film.title.toLowerCase().replace(/ /g, '-').replace(':', '');
     const renderImage = props.film.poster_path ? 
       `http://image.tmdb.org/t/p/w154/${props.film.poster_path}`
       : placeholder;
