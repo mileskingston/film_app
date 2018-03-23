@@ -11,9 +11,10 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background-color: $grey-dark;
-  color: $text-color;
-  font-family: sans-serif;
+  background-color: $off-white;
+  color: $grey-dark;
+  font-family: $font-f;
+  font-weight: $font-w-n;
   font-size: 1em;
   line-height: 1.5;
 }
@@ -38,4 +39,97 @@ input, select, textarea, button {
 
 button {
   cursor: pointer;
+}
+
+p {
+  margin-top: 0;
+
+  &:only-child, &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+.app__container {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: $spacing-r;
+  padding-right: $spacing-r;
+}
+.app-container--fixed {
+  max-width: 1600px;
+}
+.app__row {
+  @media (min-width: $mobile-min) {  
+    display: flex;
+    flex-wrap: wrap;
+  }
+  margin-left: -$spacing-r;
+  margin-right: -$spacing-r;
+}
+.app__col {
+  max-width: 100%;
+  padding-left: $spacing-r;
+  padding-right: $spacing-r;
+  @media (min-width: $mobile-min) {
+    flex-basis: 0;
+    flex-grow: 1;
+  }
+}
+
+.col-3 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+.col-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.flex-grow-3 {
+  @media (min-width: $mobile-min) {
+    flex-grow: 3;
+  }
+}
+
+.hide-mobile {
+  display: none;
+  @media (min-width: $mobile-min) {
+    display: inline-block;
+  }
+}
+
+/* Animations */
+
+.SlideIn-appear {
+  transform: translateY(-30px);
+  opacity: 0;
+}
+.SlideIn-appear.SlideIn-appear-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s linear;
+}
+.SlideIn-enter {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+.SlideIn-enter.SlideIn-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.2s linear 0.4s;
+}
+.SlideIn-leave {
+  opacity: 1.0;
+  transform: translateY(0);
+}
+.SlideIn-leave.SlideIn-leave-active {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  transform: translateY(30px);
+  transition: all 0.2s linear;
 }

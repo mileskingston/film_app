@@ -1,0 +1,16 @@
+@import './variables.scss';
+
+.app__pagination {
+  padding: $spacing-r 0;
+  text-align: center;
+}
+
+.app__pagination__btn {
+  padding: 0 $spacing-s;
+  border: 0;
+  background-color: transparent;
+
+  img {
+    width: 23px;
+  }
+}

@@ -1,7 +1,7 @@
 @import './variables.scss';
 
 .app__message {
-  margin-bottom: $spacing-m;
+  margin: $spacing-r 0;
   padding: $spacing-s;
   text-align: left;
   border-radius: 3px;

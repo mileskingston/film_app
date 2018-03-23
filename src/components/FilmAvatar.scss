@@ -1,0 +1,10 @@
+@import './variables.scss';
+
+.app__film__avatar {
+  text-align: center;
+  
+  h4 {
+    margin-top: $spacing-s;
+    margin-bottom: 0;
+  }
+}

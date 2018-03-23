@@ -1,0 +1,28 @@
+@import './variables.scss';
+
+.app__films {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-left: -$spacing-s;
+  margin-right: -$spacing-s;
+}
+.app__films__title {
+  flex: 1 1 100%;
+  font-size: 1.6rem;
+  margin: $spacing-r 0;
+
+  @media (min-width: $mobile-min) {
+    margin-top: $spacing-l;
+    margin-bottom: $spacing-l;
+  }
+
+  h3 {
+    margin-bottom: $spacing-s;
+  }
+
+  .app__films__title--totals {
+    font-size: 14px;
+    color: $grey;
+  }
+}
