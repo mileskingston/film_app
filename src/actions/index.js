@@ -1,7 +1,14 @@
 import axios from 'axios';
 
 const ROOT_URL = 'https://api.themoviedb.org/3/movie/',
-  API_KEY = '?api_key=65a08ce009e24e9aa54e97af25a56861';
+  SEARCH_URL = 'https://api.themoviedb.org/3/search/movie',
+  API_KEY = '?api_key=65a08ce009e24e9aa54e97af25a56861',
+  PAGE_NO = '&page=1',
+  LANGUAGE = '&language=en-US';
+
+// Most popular films api
+// ${ROOT_URL}popular${API_KEY}${LANGUAGE}&page=1
+
 
 export function fetchFilm(id) {
   const getDetailsUrl = `${ROOT_URL}${id}${API_KEY}`;
@@ -11,6 +18,22 @@ export function fetchFilm(id) {
     return request
       .then(
         success => dispatch(fetchFilmSuccess(success)),
+        error => dispatch(fetchFilmError(error))
+      );
+  };
+}
+
+export function fetchSearchResults(val, page) {
+  console.log()
+  const getSearchUrl = `
+    ${SEARCH_URL}${API_KEY}${LANGUAGE}&query=${val}${page ? '&page='+page : PAGE_NO}&include_adult=false
+  `;
+  const request = axios.get(getSearchUrl);
+
+  return (dispatch) => {
+    return request
+      .then(
+        success => dispatch(fetchSearchSuccess(success, val)),
         error => dispatch(fetchFilmError(error))
       );
   };
@@ -42,6 +65,40 @@ export function fetchFilmCredits(id) {
   };
 }
 
+export function fetchFilmVideos(id) {
+  const getFilmVideosUrl = `${ROOT_URL}${id}/videos${API_KEY}${LANGUAGE}`;
+  const request = axios.get(getFilmVideosUrl);
+  
+  return (dispatch) => {
+    return request
+      .then(
+        success => dispatch(fetchFilmVideosSuccess(success)),
+        error => dispatch(fetchFilmError(error))
+      );
+  };
+}
+
+export function fetchFilmRecommendations(id) {
+  const getFilmVideosUrl = `${ROOT_URL}${id}/recommendations${API_KEY}${LANGUAGE}${PAGE_NO}`;
+  const request = axios.get(getFilmVideosUrl);
+
+  return (dispatch) => {
+    return request
+      .then(
+        success => dispatch(fetchFilmRecommendationsSuccess(success)),
+        error => dispatch(fetchFilmError(error))
+      );
+  };
+}
+
+export function fetchSearchSuccess(response, val) {
+  return {
+    type: 'FETCH_SEARCH_SUCCESS',
+    data: response.data,
+    searchVal: val
+  };
+}
+
 export function fetchFilmIdSuccess(response) {
   return {
     type: 'FETCH_ID_SUCCESS',
@@ -49,9 +106,23 @@ export function fetchFilmIdSuccess(response) {
   };
 }
 
+export function fetchFilmVideosSuccess(response) {
+  return {
+    type: 'FETCH_VIDEOS_SUCCESS',
+    data: response.data
+  };
+}
+
 export function fetchFilmCreditsSuccess(response) {
   return {
     type: 'FETCH_CREDITS_SUCCESS',
+    data: response.data
+  };
+}
+
+export function fetchFilmRecommendationsSuccess(response) {
+  return {
+    type: 'FETCH_RECOMMENDATIONS_SUCCESS',
     data: response.data
   };
 }
@@ -67,12 +138,5 @@ export function fetchFilmError(response) {
   return {
     type: 'FETCH_ERROR',
     filmDetail: response.data
-  };
-}
-
-export function addFilmSearch(searchVal) {
-  return {
-    type: 'ADD_FILM_SEARCH',
-    searchVal: searchVal
   };
 }

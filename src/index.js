@@ -14,26 +14,28 @@ ReactDOM.render(
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </Provider>, 
+  </Provider>,
   document.getElementById('root')
 );
+
 registerServiceWorker();
 
 /** 
 TODO:
-* Home: latest slider
-* Search: on failed search two messages show
-* Search: placeholder image
-* Search: pagination
-* FilmDetail: conditions on backdrop and poster image
-* FilmDetail: show correct info on page
-* props on all components
+* create slider component
 * unit test all components
-* Lazy loaded image component
+* BEM naming refined
+* props on all components
 
 Improvements
 * Loader
 * render speed
 * svg sprite
 * autocomplete searchbox
+
+Stage 2
+* Lazy loaded image component
+* Home: latest slider
+* create actor/crew profiles
+* advanced pagination
 */

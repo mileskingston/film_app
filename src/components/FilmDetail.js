@@ -2,10 +2,11 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import constants from '../constants';
 import Rating from './Rating';
 import SocialLinks from './SocialLinks';
 import FilmAvatar from './FilmAvatar';
-import constants from '../constants';
+import Films from './Films';
 
 import './FilmDetail.css';
 
@@ -36,7 +37,7 @@ class FilmDetail extends Component {
 
   renderAvatar(data) {
     const items = data.map((item) =>
-      <FilmAvatar key={item.id} data={item} />
+      <FilmAvatar key={item.credit_id} data={item} />
     );
     return ( 
       <Fragment>{items}</Fragment> 
@@ -54,6 +55,7 @@ class FilmDetail extends Component {
   render() {
     const {props} = this;
     const poster = props.details.poster_path;
+
     return (
       <div className="app__film__detail">
         <section className="app__row film-detail__banner" style={this.getStyle()}>
@@ -80,7 +82,6 @@ class FilmDetail extends Component {
                     showTotal={true} 
                   />
                 }
-
                 <SocialLinks links={props.filmIds} />
               </div>  
               <div className="app__col film-detail__poster">
@@ -111,12 +112,28 @@ class FilmDetail extends Component {
                   {this.renderAvatar(props.crew)}
                 </div>
               }
-              <div className="app__row film-detail_profile-cast">
-                <h3 className="app__col film-detail-main__title">Trailer</h3>
-              </div>
+              {props.trailer.length > 0 &&
+                <div className="app__row film-detail_trailer">
+                  <h3 className="app__col film-detail-main__title">Trailer</h3>
+                  <div className="app__col film-detail_trailer-wrap">
+                    <iframe
+                      title={`${props.details.title} movie trailer`}
+                      src={`https://www.youtube.com/embed/${props.trailer[0].key}?rel=0`}
+                      frameBorder="0"
+                      allow="autoplay; encrypted-media" 
+                      allowFullScreen 
+                    />
+                  </div>
+                </div>
+              }
+              {props.recommended.length > 0 &&              
               <div className="app__row film-detail_profile-cast"> 
                 <h3 className="app__col film-detail-main__title">Recommended</h3>
+                <div className="app__col">
+                  <Films results={props.recommended} />
+                </div>
               </div>
+              }
             </div>
           </div>
 
@@ -182,7 +199,9 @@ function mapStateToProps(state) {
     filmIds: state.filmIds,
     details: state.filmDetail,
     crew: state.filmCrew,
-    cast: state.filmCast
+    cast: state.filmCast,
+    trailer: state.filmTrailer,
+    recommended: state.filmRecommendations
   }
 }
 

@@ -2,8 +2,15 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchFilm, fetchFilmIds, fetchFilmCredits } from '../actions/index';
+import { 
+  fetchFilm,
+  fetchFilmIds,
+  fetchFilmCredits,
+  fetchFilmVideos,
+  fetchFilmRecommendations
+} from '../actions/index';
 import constants from '../constants';
+import placeholder from '../images/placeholder-film.svg';
 
 import Rating from './Rating';
 
@@ -20,6 +27,8 @@ class Film extends PureComponent {
     this.props.fetchFilm(this.props.film.id);
     this.props.fetchFilmIds(this.props.film.id);
     this.props.fetchFilmCredits(this.props.film.id);
+    this.props.fetchFilmVideos(this.props.film.id);
+    this.props.fetchFilmRecommendations(this.props.film.id);
   }
 
   render() {
@@ -27,11 +36,11 @@ class Film extends PureComponent {
     const titleDecoded = props.film.title.toLowerCase().replace(/[^a-zA-Z0-9']+/g, '-').replace(/[']+/g, '');
     const renderImage = props.film.poster_path ? 
       `${constants.IMG_BASE}w300/${props.film.poster_path}`
-      : 'http://via.placeholder.com/300x450';
+      : placeholder;
 
     return (
       <div className="app_film">
-         <Link to={`/film/${titleDecoded}`} onClick={this.getFilm}> 
+        <Link to={`/film/${titleDecoded}`} onClick={this.getFilm}> 
           <img
             src={renderImage}
             alt={`${props.film.title} film poster`} 
@@ -78,8 +87,17 @@ function mapStateToProps(state) {
   return {
     filmDetail: state.film,
     filmIds: state.filmIds,
-    filmCredits: state.filmCredits
+    filmCredits: state.filmCredits,
+    fetchFilmRecommendations: state.fetchFilmRecommendations
   }
 }
 
-export default connect(mapStateToProps,{fetchFilm, fetchFilmIds, fetchFilmCredits})(Film);
+export default connect(mapStateToProps, 
+  {
+    fetchFilm, 
+    fetchFilmIds, 
+    fetchFilmCredits, 
+    fetchFilmVideos,
+    fetchFilmRecommendations
+  }
+)(Film);

@@ -6,12 +6,15 @@ import { loadState, saveState } from '../localStorage';
 const persistedState = loadState();
 
 const initState = {
-  filmIds: {},
+  filmIds: [],
   filmDetail: {},
   hasSubmitted: false,
   searchVal: null,
   filmCrew: [],
-  filmCast: []
+  filmCast: [],
+  filmSearch: [],
+  filmTrailer: [],
+  filmRecommendations: []
 };
 
 const store = createStore(

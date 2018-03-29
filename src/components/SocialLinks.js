@@ -1,61 +1,69 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './SocialLinks.css';
 import facebook from '../images/i-facebook.svg';
 import twitter from '../images/i-twitter.svg';
 import imdb from '../images/i-imdb.svg';
 import instagram from '../images/i-instagram.svg';
 
+import SocialLink from './SocialLink';
+
 function SocialLinks(props) {
-  return (
-    <div className="app__sociallinks">
-      {props.links.twitter_id &&
-        <a
-          className="app__sociallinks__link"
-          target="_blank"
-          href={`https://twitter.com/${props.links.twitter_id}`}
-        >
-          <img src={twitter} alt="twitter" />
-        </a>
+    const renderedLinks = Object.keys(props.links).map((key) => {
+      const value = props.links[key];
+
+      if (value !== null || isNaN(value)) {
+        switch(key) {
+          case 'imdb_id':
+            return (
+              <SocialLink
+                key={key}
+                href={`http://www.imdb.com/title/${value}`}
+                src={imdb}
+                alt="imdb icon"
+              />
+            );
+          case 'twitter_id':
+            return (
+              <SocialLink
+                key={key}
+                href={`https://www.twitter.com/${value}`}
+                src={twitter}
+                alt="twitter icon" 
+              />
+            );
+          case 'facebook_id':
+            return (
+              <SocialLink
+                key={key}
+                href={`https://www.facebook.com/${value}`}
+                src={facebook}
+                alt="facebook icon"
+              />
+            );
+          case 'instagram_id':
+            return (
+              <SocialLink
+                key={key}
+                href={`https://www.instagram.com/${value}`}
+                src={instagram}
+                alt="instagram icon"
+              />
+            );
+        }
       }
-      {props.links.instagram_id &&
-        <a
-          className="app__sociallinks__link"
-          target="_blank"
-          href={`https://www.instagram.com/${props.links.instagram_id}`}
-        >
-          <img src={instagram} alt="instagram" />
-        </a>
-      }
-      {props.links.facebook_id &&
-        <a
-          className="app__sociallinks__link"
-          target="_blank"
-          href={`https://www.facebook.com/${props.links.facebook_id}`}
-        >
-          <img src={facebook} alt="facebook" />
-        </a>
-      }
-      {props.links.imdb_id &&
-        <a
-          className="app__sociallinks__link"
-          target="_blank"
-          href={`http://www.imdb.com/title/${props.links.imdb_id}`}
-        >
-          <img src={imdb} alt="imdb" />
-        </a>
-      }
-    </div>
-  );
+    });
+
+    return (
+      <div className="app__social">
+        {renderedLinks}
+      </div>
+    );    
 }
 
 SocialLinks.displayName = 'SocialLinks';
 
 SocialLinks.propTypes = {
   links: PropTypes.shape({}).isRequired
-};
-
-SocialLinks.defaultProps = {
 };
 
 export default SocialLinks;

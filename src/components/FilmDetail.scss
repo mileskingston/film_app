@@ -19,15 +19,10 @@
 
 .film-detail__content {
   position: relative;
-  padding-top: $spacing-s;
-  padding-bottom: $spacing-s;
+  padding-top: $spacing-r;
+  padding-bottom: $spacing-r;
   z-index: 1;
-  color: #fff; 
-
-  @media (min-width: $mobile-min) {
-    padding-top: $spacing-r;
-    padding-bottom: $spacing-r;
-  }
+  color: #fff;
 
   h1 {
     font-size: 2rem;
@@ -49,16 +44,16 @@
 }
 
 .film-detail__poster {
+  display: none;
   position: relative;
-  padding-top: $spacing-s;
-  padding-bottom: $spacing-s;
+  padding-top: $spacing-r;
+  padding-bottom: $spacing-r;
   margin: 0 auto;
   z-index: 1;
   text-align: center;
 
   @media (min-width: $mobile-min) {
-    padding-top: $spacing-r;
-    padding-bottom: $spacing-r;
+    display: inline-block;
   }
 
   img {
@@ -104,10 +99,43 @@
   }
 }
 
+.app__col.app__film__avatar {
+  max-width: 50%;
+  flex-basis: 50%;
+  margin-bottom: $spacing-r;
+
+  @media screen and (min-width: $tablet-p-min) {
+    max-width: 33.33%;
+    flex-basis: 33.33%;
+  }
+  @media screen and (min-width: $desk-min) {
+    max-width: 16.6667%;
+    flex-basis: 16.6667%;
+  }
+}
+
 .app__col.film-detail-main__title {
   flex-basis: 100%;
 }
 
 .film-detail__main .app__row {
   margin-bottom: $spacing-r;
+}
+
+.film-detail_trailer-wrap {
+  position: relative;
+  padding-bottom: 56.25%; /* proportion value to aspect ratio 16:9 (9 / 16 = 0.5625 or 56.25%) */
+  padding-top: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+  height: 0;
+  overflow: hidden;
+
+  iframe {
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 }
