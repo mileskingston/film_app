@@ -1,0 +1,43 @@
+@import './variables.scss';
+
+.pagination {
+  padding: $spacing-r 0;
+  margin: 0;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+}
+
+.btn.btn--pagination {
+    position: relative;
+    display: block;
+    padding: 0 .75rem;
+    margin-left: -1px;
+    line-height: 1;
+    font-size: 14px;
+    color: $grey;
+    background-color: #fff;
+    border-color: $grey-lighter;
+
+    &:focus, &:hover {
+      z-index: 1;
+    }
+    &:hover {
+      background-color: $grey-lightest;
+      border-color: $grey;
+    }
+    &:disabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+  img {
+    width: 12px;
+    display: inline-block;
+  }
+
+  &.btn-pagination--prev img {
+    transform: rotate(180deg);
+  }
+}

@@ -1,0 +1,12 @@
+@import './variables.scss';
+
+.social__link {
+  &:first-child img {
+    margin-left: 0;
+  }
+
+  img {
+    height: 24px;
+    margin: 0 $spacing-s;
+  }
+}

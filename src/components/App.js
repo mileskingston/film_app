@@ -1,11 +1,12 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import { fetchSearchResults } from '../actions/index';
 import { connect } from 'react-redux';
 
-import Header from './Header';
-import FilmDetail from './FilmDetail';
-import FilmSearch from './FilmSearch';
+import Header from './Header/Header';
+import FilmDetail from './Film/FilmDetail';
+import FilmSearch from './Film/FilmSearch';
 
 import './App.css';
 
@@ -23,17 +24,31 @@ class App extends PureComponent {
 
   render() {
     return (
-      <BrowserRouter>        
+      <BrowserRouter>     
         <div className="app">
           <Switch>
-            <Route exact path="/" render={() => <Header handleClick={this.findFilm} />} />
-            <Route path="/film/:filmTitle" render={() => <Header handleClick={this.findFilm} showSearch={false} />} />
+            <Route
+              exact
+              path="/"
+              render={() => <Header handleClick={this.findFilm} />}
+            />
+            <Route
+              path="/film/:filmTitle"
+              render={() => <Header handleClick={this.findFilm} showSearch={false} />}
+            />
           </Switch>
 
-          <div className="app__container">
+          <div className="container">
             <Switch>
-              <Route exact path="/" render={() => <FilmSearch results={this.props.filmSearch} />} />
-              <Route path="/film/:filmTitle" component={FilmDetail} />
+              <Route
+                exact
+                path="/"
+                render={() => <FilmSearch results={this.props.filmSearch} />}
+              />
+              <Route
+                path="/film/:filmTitle"
+                component={FilmDetail}
+              />
             </Switch>
           </div>
         </div>
@@ -41,6 +56,12 @@ class App extends PureComponent {
     );
   }
 }
+
+App.displayName = 'App';
+
+App.propTypes = {
+  filmSearch: PropTypes.shape({}).isRequired
+};
 
 function mapStateToProps(state) {
   return {

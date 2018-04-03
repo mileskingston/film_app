@@ -20,22 +20,3 @@ ReactDOM.render(
 
 registerServiceWorker();
 
-/** 
-TODO:
-* create slider component
-* unit test all components
-* BEM naming refined
-* props on all components
-
-Improvements
-* Loader
-* render speed
-* svg sprite
-* autocomplete searchbox
-
-Stage 2
-* Lazy loaded image component
-* Home: latest slider
-* create actor/crew profiles
-* advanced pagination
-*/
