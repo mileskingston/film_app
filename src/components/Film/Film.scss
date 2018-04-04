@@ -24,11 +24,12 @@
     color: $grey-dark;
     background-color: #fff;
     border: 1px solid $grey-lighter;
-    transition: 0.3s ease-in-out;
+    transition: border 0.15s, box-shadow 0.15s;
     
     &:hover {
-      opacity: 0.6;
-    }    
+      border-color: $grey;
+      box-shadow: 0 0 2px 2px $grey-lighter;
+    }
   }
 
   img {

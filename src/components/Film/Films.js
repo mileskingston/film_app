@@ -5,7 +5,6 @@ import Film from '../Film/Film';
 import './Films.css';
 
 function Films(props) {
-  console.log(props);
   let renderFilm;
 
   if (props.results) {

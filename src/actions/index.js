@@ -9,6 +9,35 @@ const ROOT_URL = 'https://api.themoviedb.org/3/movie/',
 // Most popular films api
 // ${ROOT_URL}popular${API_KEY}${LANGUAGE}&page=1
 
+export function fetchAllFilmInfo(id) {
+  const getDetailsUrl = axios.get(`${ROOT_URL}${id}${API_KEY}`);
+  const getFilmIdsUrl = axios.get(`${ROOT_URL}${id}/external_ids${API_KEY}`);
+  const getFilmCreditsUrl = axios.get(`${ROOT_URL}${id}/credits${API_KEY}`);
+  const getFilmVideosUrl = axios.get(`${ROOT_URL}${id}/videos${API_KEY}${LANGUAGE}`);
+  const getFilmRecommendsUrl = axios.get(`${ROOT_URL}${id}/recommendations${API_KEY}${LANGUAGE}${PAGE_NO}`);
+
+  /**
+   * TODO:
+   * add redux multi for dispatch
+  */
+  return (dispatch) => {
+    return axios.all([
+      getDetailsUrl,
+      getFilmIdsUrl,
+      getFilmCreditsUrl,
+      getFilmVideosUrl,
+      getFilmRecommendsUrl
+    ])
+    .then(axios.spread((details, filmIds, credits, videos, recommendations) => {
+      dispatch(fetchFilmSuccess(details));
+      dispatch(fetchFilmIdSuccess(filmIds));
+      dispatch(fetchFilmVideosSuccess(videos));
+      dispatch(fetchFilmCreditsSuccess(credits));
+      dispatch(fetchFilmRecommendationsSuccess(recommendations));
+    }))
+    .catch(error => console.log(error));
+  };
+}
 
 export function fetchFilm(id) {
   const getDetailsUrl = `${ROOT_URL}${id}${API_KEY}`;
@@ -19,12 +48,11 @@ export function fetchFilm(id) {
       .then(
         success => dispatch(fetchFilmSuccess(success)),
         error => dispatch(fetchFilmError(error))
-      );
+      )
   };
 }
 
 export function fetchSearchResults(val, page) {
-  console.log()
   const getSearchUrl = `
     ${SEARCH_URL}${API_KEY}${LANGUAGE}&query=${val}${page ? '&page='+page : PAGE_NO}&include_adult=false
   `;
@@ -79,8 +107,8 @@ export function fetchFilmVideos(id) {
 }
 
 export function fetchFilmRecommendations(id) {
-  const getFilmVideosUrl = `${ROOT_URL}${id}/recommendations${API_KEY}${LANGUAGE}${PAGE_NO}`;
-  const request = axios.get(getFilmVideosUrl);
+  const getFilmRecommendsUrl = `${ROOT_URL}${id}/recommendations${API_KEY}${LANGUAGE}${PAGE_NO}`;
+  const request = axios.get(getFilmRecommendsUrl);
 
   return (dispatch) => {
     return request
@@ -128,6 +156,7 @@ export function fetchFilmRecommendationsSuccess(response) {
 }
 
 export function fetchFilmSuccess(response) {
+  // not calling reducer??
   return {
     type: 'FETCH_SUCCESS',
     data: response.data

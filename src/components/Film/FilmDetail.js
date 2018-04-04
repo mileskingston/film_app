@@ -7,6 +7,8 @@ import Rating from '../Rating/Rating';
 import SocialLinks from '../Social/SocialLinks';
 import Profile from '../Profile/Profile';
 import Films from '../Film/Films';
+import LazyLoadImage from '../LazyLoadImage/LazyLoadImage';
+import placeholder from '../../images/placeholder-poster.svg';
 
 import './FilmDetail.css';
 
@@ -52,6 +54,10 @@ class FilmDetail extends Component {
     }
   }
 
+  componentDidUpdate() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     const {props} = this;
     const poster = props.details.poster_path;
@@ -85,19 +91,17 @@ class FilmDetail extends Component {
                 <SocialLinks links={props.filmIds} />
               </div>  
               <div className="col film-detail__poster">
-                {poster &&
-                  <img
-                    src={`${constants.IMG_BASE}w300/${poster}`}
-                    alt={`${props.details.title} poster`}
-                  />
-                }
+                <LazyLoadImage
+                  src={`${constants.IMG_BASE}w300/${poster}`}
+                  alt={`${props.details.title} poster`}
+                  placeholder={placeholder}
+                />
               </div>
             </div>
           </div>
         </section>
 
         <section className="row film-detail__main">
-          {/* Main */}
           <div className="col col--flex-grow-3 film-detail__main-primary">
             <div className="wrapper wrapper--fixed">
               {props.cast.length > 0 &&
@@ -137,7 +141,6 @@ class FilmDetail extends Component {
             </div>
           </div>
 
-          {/* Aside */}
           <aside className="col film-detail__main-secondary">
             {props.details.runtime > 0 &&
               <p>
@@ -167,20 +170,22 @@ class FilmDetail extends Component {
               </p>
             }
 
-            {props.details.genres.length > 0 &&
-              <div>
-                <b>Genres:</b>
-                <ul className="film-detail__genres">
-                  {props.details.genres && 
-                    props.details.genres.map((genre, i) =>
-                      <li key={genre.id}>
-                        {genre.name}
-                      </li>
-                    )
-                  }
-                </ul>
-              </div>
-            }
+            {props.details.genres 
+              && props.details.genres.length > 0 
+              && (
+                <div>
+                  <b>Genres:</b>
+                  <ul className="film-detail__genres">
+                    {props.details.genres && 
+                      props.details.genres.map((genre, i) =>
+                        <li key={genre.id}>
+                          {genre.name}
+                        </li>
+                      )
+                    }
+                  </ul>
+                </div>
+              )}
           </aside>
         </section>
       </div>
@@ -202,8 +207,10 @@ FilmDetail.propTypes = {
   }).isRequired,
   recommended: PropTypes.arrayOf(PropTypes.object),
   crew: PropTypes.arrayOf(PropTypes.object).isRequired,
-  cast: PropTypes.arrayOf(PropTypes.object).isRequired
-  // filmIds: PropTypes.objectOf().isRequired
+  cast: PropTypes.arrayOf(PropTypes.object).isRequired,
+  filmIds: PropTypes.objectOf(PropTypes.oneOfType([
+    PropTypes.string, PropTypes.number
+  ])).isRequired
 };
 
 function mapStateToProps(state) {

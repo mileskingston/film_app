@@ -12,7 +12,7 @@ const initState = {
   searchVal: null,
   filmCrew: [],
   filmCast: [],
-  filmSearch: [],
+  filmSearch: {},
   filmTrailer: [],
   filmRecommendations: []
 };

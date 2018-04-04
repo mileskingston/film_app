@@ -21,7 +21,8 @@ class FilmSearch extends PureComponent {
             )
           }
 
-          {props.results.results.length < 1
+          {props.results.results
+            && props.results.results.length < 1
             && !props.hasSubmitted
             && (<Message type="info" text="Search for a film" />)
           }
@@ -60,10 +61,11 @@ FilmSearch.propTypes = {
   path: PropTypes.object,
   page: PropTypes.number,
   total_pages: PropTypes.number,
-  results: PropTypes.shape({
-    page: PropTypes.number,
-    results: PropTypes.arrayOf(PropTypes.object)
-  }).isRequired
+  results: PropTypes.object.isRequired
+  // results: PropTypes.shape({
+  //   page: PropTypes.number,
+  //   results: PropTypes.objectOf(PropTypes.object)
+  // }).isRequired
 };
 
 function mapStateToProps(state) {

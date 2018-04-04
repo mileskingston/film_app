@@ -1,6 +1,6 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import { Route, BrowserRouter } from 'react-router-dom';
 import { fetchSearchResults } from '../actions/index';
 import { connect } from 'react-redux';
 
@@ -26,31 +26,29 @@ class App extends PureComponent {
     return (
       <BrowserRouter>     
         <div className="app">
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={() => <Header handleClick={this.findFilm} />}
-            />
-            <Route
-              path="/film/:filmTitle"
-              render={() => <Header handleClick={this.findFilm} showSearch={false} />}
-            />
-          </Switch>
-
-          <div className="container">
-            <Switch>
-              <Route
-                exact
-                path="/"
-                render={() => <FilmSearch results={this.props.filmSearch} />}
-              />
-              <Route
-                path="/film/:filmTitle"
-                component={FilmDetail}
-              />
-            </Switch>
-          </div>
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <Fragment>
+                <Header handleClick={this.findFilm} />
+                <div className="container">
+                  <FilmSearch results={this.props.filmSearch} />
+                </div>
+              </Fragment>
+            )}
+          />
+          <Route
+            path="/film/:filmTitle"
+            render={() => (
+              <Fragment>
+                <Header handleClick={this.findFilm} showSearch={false} />
+                <div className="container">
+                  <FilmDetail />
+                </div>
+              </Fragment>                
+            )}
+          />
         </div>
       </BrowserRouter>
     );

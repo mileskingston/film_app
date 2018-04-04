@@ -7,24 +7,23 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### To do's
 
-* better way to calls multiple ajax requests (axios chaining requests)
 * unit test all components
-- need tests: SearchBox, Pagination, Header, Film, Films, FilmDetail, FilmSerach
+  - need tests: SearchBox, Pagination, Header, Film, Films, FilmDetail, FilmSerach
 
 
 ### Improvements
 
-* Loader
-* render speed
-* svg sprite
-* two switch statements on app.js try to get them all in one
+* implement lazy loading on Profiles/ FilmDetail
+* Redux multi (mulitple requests)
+* improve performance
 
 
 ### Stage 2
 
+* svg sprite
 * Autocomplete searchbox
-* Lazy loaded image component
 * creat slider component
-* create actor/crew profiles
-* advanced pagination
+* create actor/crew profiles pages
+* advanced pagination (first, last, 1, 2, 3)
 * animations
+* Lazy load component

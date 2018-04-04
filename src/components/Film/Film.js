@@ -2,14 +2,9 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { 
-  fetchFilm,
-  fetchFilmIds,
-  fetchFilmCredits,
-  fetchFilmVideos,
-  fetchFilmRecommendations
-} from '../../actions/index';
+import { fetchAllFilmInfo } from '../../actions/index';
 import Rating from '../Rating/Rating';
+import LazyLoadImage from '../LazyLoadImage/LazyLoadImage';
 
 import constants from '../../constants';
 import placeholder from '../../images/placeholder-film.svg';
@@ -24,11 +19,7 @@ class Film extends PureComponent {
   }
 
   getFilm() {
-    this.props.fetchFilm(this.props.film.id);
-    this.props.fetchFilmIds(this.props.film.id);
-    this.props.fetchFilmCredits(this.props.film.id);
-    this.props.fetchFilmVideos(this.props.film.id);
-    this.props.fetchFilmRecommendations(this.props.film.id);
+    this.props.fetchAllFilmInfo(this.props.film.id);
   }
 
   render() {
@@ -37,14 +28,17 @@ class Film extends PureComponent {
     const renderImage = props.film.poster_path ? 
       `${constants.IMG_BASE}w300/${props.film.poster_path}`
       : placeholder;
+    // const renderImage = placeholder;
 
     return (
       <div className="film">
-        <Link to={`/film/${titleDecoded}`} onClick={this.getFilm}> 
-          <img
+        <Link to={`/film/${titleDecoded}`} onClick={this.getFilm}>
+          <LazyLoadImage 
             src={renderImage}
-            alt={`${props.film.title} film poster`} 
+            alt={`${props.film.title} film poster`}
+            placeholder={placeholder}
           />
+
           <div className="film__content">
             <h3>{props.film.title}</h3>
             {props.film.vote_average > 0 &&
@@ -93,12 +87,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, 
-  {
-    fetchFilm, 
-    fetchFilmIds, 
-    fetchFilmCredits, 
-    fetchFilmVideos,
-    fetchFilmRecommendations
-  }
-)(Film);
+export default connect(mapStateToProps, {fetchAllFilmInfo})(Film);
