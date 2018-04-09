@@ -5,10 +5,8 @@ import { Link } from 'react-router-dom';
 import { fetchAllFilmInfo } from '../../actions/index';
 import Rating from '../Rating/Rating';
 import LazyLoadImage from '../LazyLoadImage/LazyLoadImage';
-
+import Placeholder from '../Placeholder/Placeholder';
 import constants from '../../constants';
-import placeholder from '../../images/placeholder-film.svg';
-
 import './Film.css';
 
 class Film extends PureComponent {
@@ -25,19 +23,20 @@ class Film extends PureComponent {
   render() {
     const { props } = this;
     const titleDecoded = props.film.title.toLowerCase().replace(/[^a-zA-Z0-9']+/g, '-').replace(/[']+/g, '');
-    const renderImage = props.film.poster_path ? 
-      `${constants.IMG_BASE}w300/${props.film.poster_path}`
-      : placeholder;
-    // const renderImage = placeholder;
 
     return (
       <div className="film">
         <Link to={`/film/${titleDecoded}`} onClick={this.getFilm}>
-          <LazyLoadImage 
-            src={renderImage}
-            alt={`${props.film.title} film poster`}
-            placeholder={placeholder}
-          />
+          {props.film.poster_path ? (
+            <LazyLoadImage 
+              src={`${constants.IMG_BASE}w300/${props.film.poster_path}`}
+              alt={`${props.film.title} film poster`}
+              width="300"
+              height="450"
+            /> ) : (
+              <Placeholder width="300" height="450" />
+            )
+          }
 
           <div className="film__content">
             <h3>{props.film.title}</h3>

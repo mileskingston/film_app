@@ -24,8 +24,8 @@
       z-index: 1;
     }
     &:hover {
-      background-color: $grey-lightest;
       border-color: $grey;
+      box-shadow: 0 0 2px 2px $grey-lighter;
     }
     &:disabled {
       opacity: 0.4;

@@ -1,34 +1,7 @@
 @import './variables.scss';
 
-.input,
-.btn {
-  padding: 5px 10px;
-  min-height: 35px;
-  border: 0;
-}
-
 .input {
+  padding: 5px 10px;
   border: 0;
   min-height: 35px;
-}
-
-.btn {
-  padding: 6px 12px;
-  display: inline-block;
-  border-radius: 3px;
-  border: 1px solid transparent;
-  transition: all 0.25s;
-
-  &:hover {
-    text-decoration: none;
-  }
-}
-
-.btn--primary {
-  color: #fff;
-  border-color: $brand-color;
-
-  &:hover {
-    background-color: $brand-color;
-  }
 }

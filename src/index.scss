@@ -68,6 +68,11 @@ img {
   flex-wrap: wrap;
   margin-left: -$spacing-r;
   margin-right: -$spacing-r;
+
+  &--no-margin {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 .col {

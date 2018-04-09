@@ -23,4 +23,18 @@ describe('Rating, ', () => {
   it('Rating total container not rendered', () => {
     expect(wrapper.find('.rating__star').length > 0).toBeTruthy();
   });
+
+  describe('Rating with total', () => {
+    const wrapper = mount(
+      <Rating
+        rating={5}
+        count={100}
+        showTotal={true}
+      />
+    );
+    
+    it('renders total container', () => {
+      expect(wrapper.find('.rating__total').length).toEqual(1);
+    });
+  })
 });

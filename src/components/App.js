@@ -43,9 +43,7 @@ class App extends PureComponent {
             render={() => (
               <Fragment>
                 <Header handleClick={this.findFilm} showSearch={false} />
-                <div className="container">
-                  <FilmDetail />
-                </div>
+                <FilmDetail />
               </Fragment>                
             )}
           />

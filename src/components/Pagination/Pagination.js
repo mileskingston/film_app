@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchSearchResults } from '../../actions/index';
+import Button from '../Button/Button';
 import btnIcon from '../../images/i-arrow-right.svg';
 
 import './Pagination.css';
@@ -18,22 +19,22 @@ class Pagination extends PureComponent {
     return (
       <ul className="pagination">
         <li>
-          <button
-          className="btn btn--pagination btn-pagination--prev"
-          disabled={props.currentPage === 1 ? true : false}
-          onClick={() => this.getPage(props.currentPage - 1)}
+          <Button
+            classes="btn--pagination btn-pagination--prev"
+            disabled={props.currentPage === 1 ? true : false}
+            onClick={() => this.getPage(props.currentPage - 1)}
           >
-             <img src={btnIcon} alt="arrow icon" />
-          </button>
+            <img src={btnIcon} alt="arrow icon" />
+          </Button>
         </li>
         <li>
-          <button
-            className="btn btn--pagination"
+          <Button
+            classes="btn btn--pagination btn-pagination--next"
             disabled={props.currentPage === props.total_pages ? true : false}
             onClick={() => this.getPage(props.currentPage + 1)}
           >
-             <img src={btnIcon} alt="arrow icon" />
-          </button>
+            <img src={btnIcon} alt="arrow icon" />
+          </Button>
         </li>
       </ul>
     );

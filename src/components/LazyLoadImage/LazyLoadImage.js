@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
+import PlaceHolder from '../Placeholder/Placeholder';
 
 import './LazyLoadImage.css';
 
@@ -32,11 +33,13 @@ class LazyLoadImage extends PureComponent {
           alt={props.alt}
           className={`lazy-load-image__img ${state.loaded ? 'is--fade-in' : 'is--hidden'}`}
         />
-        <img
-          src={props.placeholder}
-          alt="placeholder image"
-          className={`lazy-load-image__img ${state.loaded ? 'is--fade-out' : ''}`}
-        />
+
+        <div className={`lazy-load-image__img ${state.loaded ? 'is--fade-out' : ''}`}>
+          <PlaceHolder
+            width={props.width}
+            height={props.height}
+          />
+        </div>
       </div>
     );
   }
@@ -45,13 +48,12 @@ class LazyLoadImage extends PureComponent {
 LazyLoadImage.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string,
-  placeholder: PropTypes.string.isRequired,
-  backgroundImage: PropTypes.bool
+  width: PropTypes.string.isRequired,
+  height: PropTypes.string.isRequired
 };
 
 LazyLoadImage.defaultProps = {
-  alt: '',
-  backgroundImage: false
+  alt: ''
 };
 
 export default LazyLoadImage;

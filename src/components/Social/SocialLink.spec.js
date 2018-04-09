@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SocialLink from './SocialLink';
-import { mount } from 'enzyme';
-
-const wrapper = mount(
-  <SocialLink
-    href="http://facebook.com"
-    src="facebookIcon.svg"
-    alt="facebook"
-  />
-);
+import { shallow } from 'enzyme';
 
 describe('SocialLinks, ', () => {
+  const wrapper = shallow(
+    <SocialLink
+      href="http://facebook.com"
+      src="facebookIcon.svg"
+      alt="facebook"
+    />
+  );
+
   it('renders container', () => {
     expect(wrapper.find('.social__link').length).toEqual(1);
   });

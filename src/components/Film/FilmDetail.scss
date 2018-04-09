@@ -1,7 +1,18 @@
 @import './variables.scss';
 
+.film-detail {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto 2fr;
+}
+.film-detail__banner,
+.film-detail__main {
+  grid-column: 1/ -1;
+}
+
 .film-detail__banner {
   position: relative;
+  grid-column: span 12;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -19,8 +30,7 @@
 
 .film-detail__content {
   position: relative;
-  padding-top: $spacing-r;
-  padding-bottom: $spacing-r;
+  padding: $spacing-r;
   z-index: 1;
   color: #fff;
 
@@ -55,12 +65,9 @@
   @media (min-width: $mobile-min) {
     display: inline-block;
   }
-
-  img {
-    @media (max-width: $mobile) {
-      max-width: 200px;
-    }
-  }
+}
+.col.film-detail__poster {
+  max-width: 300px;
 }
 
 .film-detail__genres {
@@ -85,18 +92,14 @@
 
 .film-detail__main-primary {
   padding: $spacing-r;
+  grid-column: 1 / 10;
   color: $grey-dark;
   background-color: #fff;
-  @media screen and (min-width: $mobile-min) {
-    flex: 1 1 70%;
-  }
 }
 .film-detail__main-secondary {
   padding: $spacing-r;
+  grid-column: 10 / -1;  
   background-color: $grey-lightest;
-  @media screen and (min-width: $mobile-min) {  
-    flex: 1 1 30%;
-  }
 }
 
 .col.profile {
@@ -118,13 +121,13 @@
   flex-basis: 100%;
 }
 
-.film-detail__main .row {
+.film-detail__main-primary .row {
   margin-bottom: $spacing-r;
 }
 
 .film-detail__trailer-wrap {
   position: relative;
-  padding-bottom: 56.25%; /* proportion value to aspect ratio 16:9 (9 / 16 = 0.5625 or 56.25%) */
+  padding-bottom: 56.25%; /* aspect ratio 16:9 */
   padding-top: 30px;
   margin-left: 20px;
   margin-right: 20px;

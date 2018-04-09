@@ -1,14 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import LazyLoadImage from './LazyLoadImage';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import placeholder from '../../images/placeholder-film.svg';
 
-const wrapper = mount(
-  <LazyLoadImage src={placeholder} alt="image" placeholder={placeholder} />
-);
-
 describe('LazyLoadImage, ', () => {
+  const wrapper = shallow(
+    <LazyLoadImage
+      src={placeholder}
+      alt="image"
+      width="400"
+      height="400"
+    />
+  );
+
   it('renders container', () => {
     expect(wrapper.find('.lazy-load-image').length).toEqual(1);
   });

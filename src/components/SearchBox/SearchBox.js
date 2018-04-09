@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Button from '../Button/Button';
 import searchIcon from '../../images/search.svg';
 
 import './SearchBox.css';
@@ -43,13 +44,12 @@ class SearchBox extends PureComponent {
           onChange={this.handleChange}
           required
         />
-        <button
-          type="button"
-          className="btn"
+        <Button
+          classes="btn--search"
           onClick={e => this.handleClick(e, state.searchVal)}
         >
           <img src={searchIcon} alt="search icon" width="25" />
-        </button>
+        </Button>
       </form>
     );
   }
