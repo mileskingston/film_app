@@ -92,14 +92,21 @@
 
 .film-detail__main-primary {
   padding: $spacing-r;
-  grid-column: 1 / 10;
+  grid-column: 1 / -1;
   color: $grey-dark;
   background-color: #fff;
+
+  @media screen and (min-width: $tablet-p-min) {
+    grid-column-end: 10;
+  }
 }
 .film-detail__main-secondary {
   padding: $spacing-r;
-  grid-column: 10 / -1;  
+  grid-column: 1 / -1;  
   background-color: $grey-lightest;
+  @media screen and (min-width: $tablet-p-min) {
+    grid-column-start: 10;
+  }
 }
 
 .col.profile {
@@ -125,7 +132,7 @@
   margin-bottom: $spacing-r;
 }
 
-.film-detail__trailer-wrap {
+.film-detail__trailer {
   position: relative;
   padding-bottom: 56.25%; /* aspect ratio 16:9 */
   padding-top: 30px;

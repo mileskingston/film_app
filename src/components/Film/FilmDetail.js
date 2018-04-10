@@ -119,7 +119,7 @@ class FilmDetail extends Component {
           {props.trailer.length > 0 &&
             <div className="row film-detail_trailer">
               <h3 className="col film-detail__main-title">Trailer</h3>
-              <div className="col film-detail__trailer-wrap">
+              <div className="col film-detail__trailer">
                 <iframe
                   title={`${props.details.title} movie trailer`}
                   src={`https://www.youtube.com/embed/${props.trailer[0].key}?rel=0`}
@@ -132,9 +132,9 @@ class FilmDetail extends Component {
           }
 
           {props.recommended.length > 0 &&
-            <div className="row film-detail__profile-cast"> 
+            <div className="row"> 
               <h3 className="col film-detail__main-title">Recommended</h3>
-              <div className="col">
+              <div className="col film-detail__recommend">
                 <Films results={props.recommended} />
               </div>
             </div>

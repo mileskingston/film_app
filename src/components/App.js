@@ -23,6 +23,7 @@ class App extends PureComponent {
   }
 
   render() {
+
     return (
       <BrowserRouter>     
         <div className="app">

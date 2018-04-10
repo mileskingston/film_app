@@ -7,16 +7,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### To do's
 
-* unit test all components
-  - need tests: App, Film, FilmDetail
-
-
 ### Improvements
 
-* improve code coverage - Pagination, FilmSearch, SocialLinks, SearchBox, LazyLoadImage
 * Redux multi (mulitple requests)
 * improve performance
 * add Button Component througout app
+* improve code coverage - Pagination, FilmSearch, App
+* Testing store and other redux components
 
 
 ### Stage 2

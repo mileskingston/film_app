@@ -78,6 +78,7 @@ Film.propTypes = {
 };
 
 function mapStateToProps(state) {
+  
   return {
     filmDetail: state.film,
     filmIds: state.filmIds,
